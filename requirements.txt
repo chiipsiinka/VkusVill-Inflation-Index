@@ -4,3 +4,4 @@ gspread>=6.0
 google-auth>=2.29
 openpyxl>=3.1
 truststore>=0.9
+pypdf>=4.0

@@ -23,7 +23,7 @@ if not "%RC%"=="0" (
     echo PRICES: done.
 )
 if not "%RC2%"=="0" (
-    echo ROSSTAT: could not load the release. See log.txt, download nedel_Ipc.xlsx by hand and run run_rosstat.bat
+    echo ROSSTAT: could not load the release. See log.txt, download the PDF release or nedel_Ipc.xlsx by hand and drag it onto run_rosstat.bat
 )
 echo This window closes in 60 seconds (press any key to close now).
 timeout /t 60 > nul

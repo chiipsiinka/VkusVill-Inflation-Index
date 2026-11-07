@@ -21,9 +21,14 @@ It runs on our computer in St. Petersburg. Windows Task Scheduler starts `run_da
 4. It opens each product page and reads the regular price, the promo price, the price unit (per pack or
    per kg), the pack size and how many are left in the store.
 5. It adds one row per product to "Daily Prices".
-6. `rosstat.py` then checks whether Rosstat has published a new week. If so, it downloads the file
-   (nedel_Ipc.xlsx from rosstat.gov.ru), finds our 27 products in it and writes the weekly price
+6. `rosstat.py` then checks whether Rosstat has published a new week. If so, it downloads the table
+   nedel_Ipc.xlsx from rosstat.gov.ru, finds our 27 products in it and writes the weekly price
    changes to the "Rosstat Weekly" sheet.
+7. If the table does not have the new week yet (Rosstat sometimes moves or renames it), the script
+   looks for the weekly PDF release "Об оценке индекса потребительских цен" instead. Besides our
+   27 products, the release gives the overall CPI for the week, which goes to column B of the
+   "Rosstat Comparison" sheet if that cell is still empty. Every file is checked (right week, all 27
+   products, values close to 100) before anything is written.
 
 ## Files
 
@@ -32,7 +37,7 @@ It runs on our computer in St. Petersburg. Windows Task Scheduler starts `run_da
 | `scraper.py` | collects prices from vkusvill.ru |
 | `rosstat.py` | loads Rosstat's weekly data for our products |
 | `run_daily.bat` | daily launcher (prices, then Rosstat); writes a log to `log.txt` |
-| `run_rosstat.bat` | loads Rosstat data by hand; you can drag a downloaded Rosstat file onto it |
+| `run_rosstat.bat` | loads Rosstat data by hand; you can drag a downloaded Rosstat file (.xlsx table or .pdf release) onto it |
 | `basket.csv` | copy of the basket, used for test runs |
 | `requirements.txt` | Python packages |
 
